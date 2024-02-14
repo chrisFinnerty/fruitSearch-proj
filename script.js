@@ -14,7 +14,19 @@ function search(str) {
 		if (name.toLowerCase().includes(lowerCaseStr)) {
 			results.push(name);
 			const newLi = document.createElement('li');
-			newLi.innerText = name;
+			let boldName = '';
+			let index = name.toLowerCase().indexOf(lowerCaseStr);
+			let endIndex = index + lowerCaseStr.length;
+
+			for (let i = 0; i < name.length; i++) {
+				if (i >= index && i < endIndex) {
+					boldName += '<b>' + name[i] + '</b>';
+				}
+				else {
+					boldName += name[i];
+				}
+			}
+			newLi.innerHTML = boldName;
 			suggestions.append(newLi);
 		}
 	}
@@ -31,7 +43,7 @@ function search(str) {
 function searchHandler(e) {
 	const searchTerm = e.target.value.trim();
 
-	if (searchTerm.length > 1) {
+	if (searchTerm.length > 0) {
 		search(searchTerm);
 	}
 	else {
