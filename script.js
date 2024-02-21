@@ -35,6 +35,7 @@ function search(str) {
 		const newLi = document.createElement('li');
 		newLi.innerText = 'No results found';
 		suggestions.append(newLi);
+		suggestions.removeEventListener('click', useSuggestion);
 	}
 	
 	return results;
