@@ -11,14 +11,14 @@ function search(str) {
 	const lowerCaseStr = str.toLowerCase();
 
 	for (let name of fruit) {
-		if (name.toLowerCase().includes(lowerCaseStr)) {
+		if (name.toLowerCase().includes(lowerCaseStr)) { //looping through each fruitName in the fruit array
 			results.push(name);
 			const newLi = document.createElement('li');
 			let boldName = '';
-			let index = name.toLowerCase().indexOf(lowerCaseStr);
+			let index = name.toLowerCase().indexOf(lowerCaseStr); //gives us the first occurence (indexOf) of the lowerCaseStr in name.toLowerCase()
 			let endIndex = index + lowerCaseStr.length;
 
-			for (let i = 0; i < name.length; i++) {
+			for (let i = 0; i < name.length; i++) { //looping through each character/letter of name
 				if (i >= index && i < endIndex) {
 					boldName += '<b>' + name[i] + '</b>';
 				}
