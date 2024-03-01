@@ -35,7 +35,6 @@ function search(str) {
 		const newLi = document.createElement('li');
 		newLi.innerText = 'No results found';
 		suggestions.append(newLi);
-		suggestions.removeEventListener('click', useSuggestion);
 	}
 	
 	return results;
@@ -54,9 +53,13 @@ function searchHandler(e) {
 
 function useSuggestion(e) {
 	const suggestedSearch = e.target.innerText;
+
+	if (suggestedSearch && suggestedSearch !== 'No results found') {
+
+		input.value = suggestedSearch;
+		suggestions.innerHTML = '';
+	}
 	
-	input.value = suggestedSearch;
-	suggestions.innerHTML = '';
 }
 
 input.addEventListener('keyup', searchHandler); //event listener for key strokes in the search bar (input)
